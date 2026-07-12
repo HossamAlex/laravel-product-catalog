@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class BannerResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray($request): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'link' => $this->link,
+            'button_text' => $this->button_text,
+            'desktop_image' => $this->getFirstMediaUrl('desktop_image'),
+            'mobile_image' => $this->getFirstMediaUrl('mobile_image'),
+        ];
+    }
+}
